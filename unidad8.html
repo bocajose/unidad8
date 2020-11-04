@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario- ejercicio obligatorio Javascript 3</title>
+</head>
+<body>   
+    <h2>Ingreso al Sistema</h2>
+<form method="post" action="procesar.php" id="procesar" name="procesar">
+
+<div>
+	<label for="email">Usuario: </label>
+	<input type="text" name="email" id="email" placeholder="Usu@rio">
+</div>	
+<div>
+	<label for="password">Clave: </label>
+	<input type="password" name="password" id="password" placeholder="*******">
+</div>	
+<br>	
+<div>
+	<input type="submit" id="submit" value="Ingresar">
+</div>
+</form>
+       
+   
+<script type="text/javascript">
+
+	function validarEmail(email) 
+	{
+	    var re = /\S+@\S+\.\S+/;
+	    return re.test(email);
+	}
+		var form = document.procesar;
+
+	document.procesar.onsubmit = function(e){
+		var ready = false;
+		
+		if(form.email.value!=""&& form.password.value!="" ){
+			ready = true;
+		}else{
+				ready= false;
+				alert("Hay algunos campos vacios");
+				e.preventDefault();			
+		}
+
+		if(ready){
+			if(validarEmail(form.email.value)){		
+			}else {
+					alert("Falta el arroba en el usuario");
+					form.email.focus();
+					e.preventDefault();			
+			}
+		}
+
+	}
+</script>
+
+</body>
+</html>
